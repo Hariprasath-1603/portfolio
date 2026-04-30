@@ -9,25 +9,33 @@
   --mid:         #555555;
   --light:       #F5F5F5;
   --white:       #FFFFFF;
+  --bg:          #FFFFFF;
   --radius:      18px;
   --transition:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+body.dark-theme {
+  --dark:        #F5F5F5;
+  --mid:         #A0A0A0;
+  --light:       #2A2A2A;
+  --white:       #181818;
+  --bg:          #121212;
+  --orange-pale: #2A1A0D;
+}
 
 html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--white);
+  background: var(--bg);
   color: var(--dark);
   overflow-x: hidden;
   line-height: 1.6;
 }
 
 /* ─── CUSTOM CURSOR ─── */
-body { cursor: none; } /* Hide default cursor */
-a, button, input, textarea, .skill-pill, .tool-badge, .project-card, .hamburger, label {
-  cursor: none !important;
+@media (pointer: fine) {
+  * { cursor: none !important; }
 }
 
 .custom-cursor {
@@ -55,6 +63,13 @@ a, button, input, textarea, .skill-pill, .tool-badge, .project-card, .hamburger,
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
+}
+
+@media (pointer: coarse) {
+  .custom-cursor, .custom-cursor-follower {
+    display: none !important;
+  }
+}
   transition: width 0.3s, height 0.3s, border-color 0.3s;
   /* Use a slight delay for the follower effect using JS, not CSS transition on transform to keep it smooth */
 }
@@ -92,8 +107,8 @@ a, button, input, textarea, .skill-pill, .tool-badge, .project-card, .hamburger,
   font-style: italic;
   color: var(--orange);
 }
-.section-title.light { color: var(--white); }
-.section-title.light em { color: var(--orange-soft); }
+.section-title.light { color: #ffffff !important; }
+.section-title.light em { color: var(--orange-soft) !important; }
 
 .section-tag {
   display: inline-block;
@@ -174,11 +189,11 @@ a, button, input, textarea, .skill-pill, .tool-badge, .project-card, .hamburger,
   align-items: center;
   justify-content: space-between;
   padding: 18px 5%;
-  background: rgba(255,255,255,0.9);
+  background: var(--bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  transition: box-shadow 0.3s;
+  border-bottom: 1px solid rgba(128,128,128,0.1);
+  transition: box-shadow 0.3s, background 0.3s;
 }
 .navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
 
@@ -253,6 +268,7 @@ a, button, input, textarea, .skill-pill, .tool-badge, .project-card, .hamburger,
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 120px 5% 60px;
   gap: 4rem;
   overflow: hidden;
@@ -353,7 +369,7 @@ a, button, input, textarea, .skill-pill, .tool-badge, .project-card, .hamburger,
 /* Right panel */
 .hero-right {
   flex: 1;
-  max-width: 580px;
+  max-width: 650px;
 }
 
 .greeting {
@@ -642,6 +658,17 @@ a, button, input, textarea, .skill-pill, .tool-badge, .project-card, .hamburger,
   box-shadow: 0 8px 20px rgba(255,107,0,0.12);
 }
 
+body.dark-theme .skill-pill {
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.1);
+  color: #fff;
+}
+body.dark-theme .skill-pill:hover {
+  border-color: var(--orange);
+  background: rgba(255,107,0,0.1);
+  color: var(--orange);
+}
+
 .tools-row {
   display: flex;
   flex-wrap: wrap;
@@ -667,6 +694,15 @@ a, button, input, textarea, .skill-pill, .tool-badge, .project-card, .hamburger,
   border-color: var(--orange);
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(255,107,0,0.1);
+}
+
+body.dark-theme .tool-badge {
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.1);
+  color: #fff;
+}
+body.dark-theme .tool-badge:hover {
+  border-color: var(--orange);
 }
 
 /* ─── RESUME BANNER ─── */
@@ -742,6 +778,19 @@ a, button, input, textarea, .skill-pill, .tool-badge, .project-card, .hamburger,
   border-color: var(--orange);
   box-shadow: 0 0 0 3px rgba(255,107,0,0.12);
 }
+
+body.dark-theme .form-group input,
+body.dark-theme .form-group textarea {
+  border-color: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+}
+body.dark-theme .form-group input:focus,
+body.dark-theme .form-group textarea:focus {
+  border-color: var(--orange);
+  background: rgba(255,255,255,0.06);
+}
+
 .form-group input::placeholder,
 .form-group textarea::placeholder { color: #bbb; }
 
@@ -773,7 +822,7 @@ a, button, input, textarea, .skill-pill, .tool-badge, .project-card, .hamburger,
 
 /* ─── FOOTER ─── */
 .footer {
-  background: var(--dark);
+  background: #111111;
   color: rgba(255,255,255,0.7);
   padding: 40px 5%;
   display: flex;
@@ -782,7 +831,7 @@ a, button, input, textarea, .skill-pill, .tool-badge, .project-card, .hamburger,
   justify-content: space-between;
   gap: 1.5rem;
 }
-.footer .logo { color: var(--white); }
+.footer .logo { color: #ffffff; }
 .footer-left p { font-size: 0.82rem; margin-top: 4px; color: rgba(255,255,255,0.45); }
 
 .footer-socials {

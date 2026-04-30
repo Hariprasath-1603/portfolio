@@ -1,5 +1,32 @@
 /* ─── main.js ─── */
 
+// ── Theme Toggle ──
+const themeToggle = document.getElementById('themeToggle');
+const iconSun = document.querySelector('.icon-sun');
+const iconMoon = document.querySelector('.icon-moon');
+
+// Check local storage or system preference
+const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+if (currentTheme === 'dark') {
+  document.body.classList.add('dark-theme');
+  iconSun.style.display = 'none';
+  iconMoon.style.display = 'inline';
+}
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+  const isDark = document.body.classList.contains('dark-theme');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  
+  if (isDark) {
+    iconSun.style.display = 'none';
+    iconMoon.style.display = 'inline';
+  } else {
+    iconSun.style.display = 'inline';
+    iconMoon.style.display = 'none';
+  }
+});
+
 // ── Navbar scroll effect ──
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
@@ -10,51 +37,55 @@ window.addEventListener('scroll', () => {
 const cursor = document.getElementById('customCursor');
 const follower = document.getElementById('customCursorFollower');
 
-let mouseX = 0, mouseY = 0;
-let followerX = 0, followerY = 0;
+const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  
-  // Move main cursor immediately
-  cursor.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-});
+if (!isTouchDevice) {
+  let mouseX = 0, mouseY = 0;
+  let followerX = 0, followerY = 0;
 
-// Follower animation loop for smooth trailing effect
-function animateFollower() {
-  // Easing factor - lower is slower/smoother
-  followerX += (mouseX - followerX) * 0.15;
-  followerY += (mouseY - followerY) * 0.15;
-  
-  follower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%)`;
-  requestAnimationFrame(animateFollower);
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    // Move main cursor immediately
+    cursor.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+  });
+
+  // Follower animation loop for smooth trailing effect
+  function animateFollower() {
+    // Easing factor - lower is slower/smoother
+    followerX += (mouseX - followerX) * 0.15;
+    followerY += (mouseY - followerY) * 0.15;
+    
+    follower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%)`;
+    requestAnimationFrame(animateFollower);
+  }
+  animateFollower();
+
+  // Add hover states for interactive elements
+  const interactables = document.querySelectorAll('a, button, input, textarea, .skill-pill, .tool-badge, .project-card');
+
+  interactables.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('hover');
+      follower.classList.add('hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+      follower.classList.remove('hover');
+    });
+  });
+
+  // Hide cursor when leaving window
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+    follower.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+    follower.style.opacity = '1';
+  });
 }
-animateFollower();
-
-// Add hover states for interactive elements
-const interactables = document.querySelectorAll('a, button, input, textarea, .skill-pill, .tool-badge, .project-card');
-
-interactables.forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.classList.add('hover');
-    follower.classList.add('hover');
-  });
-  el.addEventListener('mouseleave', () => {
-    cursor.classList.remove('hover');
-    follower.classList.remove('hover');
-  });
-});
-
-// Hide cursor when leaving window
-document.addEventListener('mouseleave', () => {
-  cursor.style.opacity = '0';
-  follower.style.opacity = '0';
-});
-document.addEventListener('mouseenter', () => {
-  cursor.style.opacity = '1';
-  follower.style.opacity = '1';
-});
 
 // ── Hamburger menu ──
 const hamburger = document.getElementById('hamburger');
@@ -176,7 +207,7 @@ form.addEventListener('submit', async (e) => {
 
 // ── Cursor glow effect on hero ──
 const hero = document.querySelector('.hero');
-if (hero) {
+if (hero && !isTouchDevice) {
   hero.addEventListener('mousemove', (e) => {
     const rect = hero.getBoundingClientRect();
     const x = e.clientX - rect.left;

@@ -5,14 +5,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hari Prasath — Portfolio</title>
-  <meta name="description"
-    content="Hari Prasath — Data Science Student & ML Developer passionate about building intelligent systems that matter." />
+  <meta name="description" content="Hari Prasath — Data Science Student & ML Developer passionate about building intelligent systems that matter." />
+  
+  <!-- SEO & Social Previews (Open Graph) -->
+  <meta property="og:title" content="Hari Prasath | Data Science & ML Developer" />
+  <meta property="og:description" content="Portfolio of a Data Science student building intelligent systems and training neural networks." />
+  
+  <!-- Basic Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Serif+Display:ital@0;1&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="style.css?v=6" />
   <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
@@ -31,9 +38,16 @@
       <li><a href="#resume" id="nav-resume">Resume</a></li>
       <li><a href="#contact" id="nav-contact" class="btn-contact">Contact</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+    
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" style="background: none; border: none; font-size: 1.2rem; cursor: none !important;">
+        <span class="icon-sun">☀️</span>
+        <span class="icon-moon" style="display:none;">🌙</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- ─── HERO ─── -->
@@ -304,7 +318,7 @@
     <p class="footer-copy">© 2025 Hari Prasath. All rights reserved.</p>
   </footer>
 
-  <script src="main.js?v=5"></script>
+  <script src="main.js?v=7"></script>
 </body>
 
 </html>
