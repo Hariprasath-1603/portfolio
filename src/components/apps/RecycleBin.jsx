@@ -64,6 +64,7 @@ const RECYCLE_FILES = [
 const RecycleBin = ({ isRecycleOpen, toggleRecycle, bounds, isActive = false, bringToFront, isMinimized = false, minimizeWindow }) => {
   const explorerRef = useRef(null);
   const [isMaximized, setIsMaximized] = useState(false);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
   const [funnyMsg, setFunnyMsg] = useState(null);
 
   const showFunnyMessage = (e, msgList) => {
@@ -93,18 +94,21 @@ const RecycleBin = ({ isRecycleOpen, toggleRecycle, bounds, isActive = false, br
       <Draggable
         handle=".title-bar"
         nodeRef={explorerRef}
-        bounds={isMaximized ? false : bounds}
-        disabled={isMaximized}
+        bounds={bounds}
+        position={isMaximized ? { x: 0, y: 0 } : pos}
+        onDrag={(e, data) => {
+          if (isMaximized) setIsMaximized(false);
+          setPos({ x: data.x, y: data.y });
+        }}
       >
         <div
           ref={explorerRef}
           onMouseDown={bringToFront}
           className={`pointer-events-auto flex flex-col bg-neutral-900 text-white border-neutral-700 border-[1.5px] ${
             isMaximized
-              ? "!fixed !inset-0 !w-full !h-full !rounded-none"
+              ? "!w-full !h-[calc(100vh-3rem)] !rounded-none !border-none"
               : "w-[70.5rem] h-[39rem] rounded-xl"
           } overflow-hidden relative`}
-          style={isMaximized ? {} : undefined}
         >
           {/* ── Title bar ── */}
           <div className="title-bar flex-shrink-0 bg-neutral-800 h-9 flex items-center justify-between px-3 select-none">
