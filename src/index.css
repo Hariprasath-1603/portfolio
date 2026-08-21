@@ -72,15 +72,7 @@ body {
   }
 }
 
-/* GPU acceleration for smooth animations */
-.window,
-.title-bar,
-[class*="motion-"],
-[draggable="true"] {
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
+/* GPU acceleration removed due to compositor layer overload in production */
 .context-menu {
   position: fixed;
   display: flex;
