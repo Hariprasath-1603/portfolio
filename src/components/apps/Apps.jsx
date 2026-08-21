@@ -348,3 +348,4 @@ function Apps({ isAppOpen, toggleApp, bounds, input, isActive = false, bringToFr
 
 export default React.memo(Apps);
 
+

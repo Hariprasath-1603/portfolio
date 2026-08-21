@@ -35,37 +35,77 @@ export const workExperienceTemplate = [];
 // GitHub Repositories (Hari's Projects)
 export const githubRepos = [
   {
+    name: "InjectShield",
+    category: "Security / LLMs",
+    year: 2026,
+    techUsed: ["Python", "FastAPI", "AWS ECS", "llama-3.1-8b"],
+    description: "AI-driven prompt injection detection system built on AgentDojo. Uses a behavioral baseline profiler and four-component anomaly scorer to flag malicious agent inputs in real time. Achieved 96.7% mock accuracy and 100% recall.",
+    githubLink: `${githubLink}/InjectShield`,
+  },
+  {
+    name: "AgentScholar",
+    category: "AI Agents / NLP",
+    year: 2026,
+    techUsed: ["LangGraph", "Llama 3", "FAISS", "Tavily"],
+    description: "Multi-agent research automation pipeline that coordinates specialized agents (Planner, Searcher, Synthesizer, Report Writer) to autonomously research and write reports. Includes hallucination scoring and SQLite checkpointing.",
+    githubLink: `${githubLink}/AgentScholar`,
+  },
+  {
+    name: "BudgetShield",
+    category: "MLOps / Cost Governance",
+    year: 2026,
+    techUsed: ["Postgres", "Python", "REST API"],
+    description: "LLM cost-governance proxy enforcing spending limits via atomic metering. Returns HTTP 402 for exceeded budgets and auto-pauses runaway agents. Includes model-substitution routing and an admin dashboard.",
+    githubLink: `${githubLink}/BudgetShield`,
+  },
+  {
+    name: "HealOPS",
+    category: "Healthcare / Full-Stack",
+    year: 2025,
+    techUsed: ["Python", "FastAPI", "Flutter", "JWT"],
+    description: "Full-stack healthcare management system covering the patient lifecycle from registration to appointment scheduling. Features JWT authentication, record management, and a clean REST API layer.",
+    githubLink: `${githubLink}/HealOPS`,
+  },
+  {
     name: "VisionCrafter",
     category: "Generative AI",
     year: 2024,
-    techUsed: ["Python", "PyTorch", "GANs", "OpenCV"],
-    description: "An image generation model powered by Generative Adversarial Networks (GANs). Users provide text prompts to generate high-quality, creative images, blending deep learning with intuitive user interaction.",
+    techUsed: ["Python", "TensorFlow", "Keras", "GANs"],
+    description: "Conditional GAN built for text-to-image synthesis, featuring a custom generator-discriminator training loop. Trained on COCO with a full image synthesis pipeline. Patent filed on the underlying approach.",
     githubLink: `${githubLink}/VisionCrafter`,
   },
   {
     name: "SyncUp",
-    category: "AI + Social",
+    category: "Social Networking",
     year: 2024,
-    techUsed: ["Flutter", "Python", "Jarvis AI"],
-    description: "A social media application supercharged with Jarvis AI. Users can use natural language commands to interact with posts, reels, stories and other social-media functionality in a hands-free and intelligent way.",
+    techUsed: ["Flutter", "Dart", "Supabase", "Provider"],
+    description: "Social networking app supporting real-time posts, comments, likes, and profile management for active users. Includes PKCE auth, GoRouter navigation, and a hybrid recommendation engine.",
     githubLink: `${githubLink}/sync_up`,
   },
   {
-    name: "HealOps",
-    category: "MLOps / Healthcare",
-    year: 2025,
-    techUsed: ["Python", "FastAPI", "MLflow", "scikit-learn"],
-    description: "A modern healthcare management backend built with FastAPI, designed to provide secure, scalable and efficient healthcare services with real-time notifications.",
-    githubLink: `${githubLink}/HealOPS`,
+    name: "RideR",
+    category: "Mobile App",
+    year: 2026,
+    techUsed: ["Flutter", "Dart"],
+    description: "Solo-built ride-hailing app in Flutter/Dart, part of a two-app suite (rider + captain sides) modeled on real-world ride-hailing UX. Covers core booking and matching flows.",
+    githubLink: `${githubLink}/RideR`,
   },
   {
     name: "BlinkSense",
     category: "Computer Vision",
     year: 2026,
-    techUsed: ["Python", "OpenCV", "dlib", "TensorFlow"],
-    description: "A real-time drowsiness detection ML system that monitors eye-blink patterns and facial landmarks to detect driver fatigue and provide alerts.",
+    techUsed: ["Python", "OpenCV", "dlib"],
+    description: "Real-time driver drowsiness detection system using the Eye Aspect Ratio (EAR) algorithm on live webcam video. Triggers audible and visual alerts when fatigue is detected.",
     githubLink: `${githubLink}/BlinkSense`,
   },
+  {
+    name: "Weather",
+    category: "Mobile App",
+    year: 2025,
+    techUsed: ["Flutter", "OpenWeatherMap API"],
+    description: "Flutter weather app pulling real-time and forecasted data. Displays current temperature, conditions, humidity, and wind speed through a clean, intuitive UI.",
+    githubLink: `${githubLink}/weather`,
+  }
 ];
 
 // Education Experience (Empty for now, can be populated later)
@@ -263,5 +303,6 @@ export const socialMediaLinks = {
   leetcode: "https://leetcode.com/u/hariprasath-sm/",
   email: "mailto:sm.hariprasath16@gmail.com",
 };
+
 
 
