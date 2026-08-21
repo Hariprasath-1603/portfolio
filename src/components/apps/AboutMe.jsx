@@ -32,7 +32,7 @@ const ProjectCard = ({ repo }) => {
           <FaGithub size={30} />
         </a>
         <a
-          href={repo.liveURL}
+          href={repo.liveURL || repo.githubLink}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Visit live site"
@@ -238,4 +238,5 @@ const AboutMe = ({ page, expandedDiv, handleDivClick, openBrowser }) => {
 };
 
 export default AboutMe;
+
 
