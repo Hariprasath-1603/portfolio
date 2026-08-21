@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { MdMinimize, MdCheckBoxOutlineBlank, MdClose, MdAdd } from "react-icons/md";
+import emailjs from "@emailjs/browser";
+
+emailjs.init({ publicKey: "eOIaJ6sq7tETY7HYp" });
 
 function Apps({ isAppOpen, toggleApp, bounds, input, isActive = false, bringToFront, isMinimized = false, minimizeWindow, openBrowser }) {
   const [isMaximized, setIsMaximized] = useState(false);
@@ -9,10 +12,46 @@ function Apps({ isAppOpen, toggleApp, bounds, input, isActive = false, bringToFr
   const [commands, setCommands] = useState("");
   const [output, setOutput] = useState([]);
   const windowRef = React.useRef(null);
+  const [interactiveState, setInteractiveState] = useState(null);
 
   const handleInput = (e) => {
     if (e.key === "Enter") {
+      const rawCmd = commands;
       const cmd = commands.trim().toLowerCase();
+
+      if (interactiveState) {
+        if (interactiveState.command === "contact") {
+          const data = { ...interactiveState.data };
+          if (interactiveState.step === 1) {
+            data.name = rawCmd.trim();
+            setOutput(prev => [...prev, { commands: rawCmd, result: "Enter your email address:" }]);
+            setInteractiveState({ command: 'contact', step: 2, data });
+          } else if (interactiveState.step === 2) {
+            data.email = rawCmd.trim();
+            setOutput(prev => [...prev, { commands: rawCmd, result: "Enter your message:" }]);
+            setInteractiveState({ command: 'contact', step: 3, data });
+          } else if (interactiveState.step === 3) {
+            data.message = rawCmd.trim();
+            setOutput(prev => [...prev, { commands: rawCmd, result: "Sending message... Please wait." }]);
+            setInteractiveState(null);
+            
+            emailjs.send('service_uzk19vb', 'template_j5btg4p', {
+              from_name: data.name,
+              from_email: data.email,
+              email: data.email,
+              message: data.message,
+              time: new Date().toLocaleString(),
+            }).then(() => {
+              setOutput(prev => [...prev, { commands: "", result: "🎉 Message sent! I'll get back to you soon." }]);
+            }).catch(err => {
+              setOutput(prev => [...prev, { commands: "", result: "❌ Failed to send. Please email me directly at sm.hariprasath16@gmail.com" }]);
+            });
+          }
+          setCommands("");
+          return;
+        }
+      }
+
       if (cmd === "cls" || cmd === "clear") {
         setOutput([]);
         setCommands("");
@@ -28,10 +67,10 @@ function Apps({ isAppOpen, toggleApp, bounds, input, isActive = false, bringToFr
           result = "Hari Prasath\nML / AI Developer\n\nI am a data science student passionate about building intelligent systems.\nI train neural networks, develop modern web apps, and enjoy solving complex problems.\nType 'skills' or 'projects' to see more about my work!";
           break;
         case "projects":
-          result = "[1] VisionCrafter\n[2] SyncUp\n[3] HealOps\n[4] BlinkSense";
+          result = "[1] InjectShield\n[2] AgentScholar\n[3] HealOPS\n[4] videosnatcherz\n[5] BudgetShield\n[6] UrbanShield\n[7] portfolio\n[8] VisionCrafter\n[9] langgraph\n[10] redrob_ai_challenge\n[11] SyncUp\n[12] Langchain\n[13] BlinkSense\n[14] RideR\n[15] KrishiMitra\n[16] Weather";
           break;
         case "skills":
-          result = "Python, PyTorch, TensorFlow, Keras, scikit-learn, OpenCV, GANs, NLP, Pandas, SQL, Git";
+          result = "Languages: Python, Dart, C, HTML/CSS/JS\nFrameworks: FastAPI, Flutter, React, Supabase\nAI/ML: PyTorch, TensorFlow, LangChain, LangGraph, LLMs, Computer Vision\nTools: Docker, AWS ECS, Git, OpenCV";
           break;
         case "github":
           result = "Opening GitHub...";
@@ -49,7 +88,8 @@ function Apps({ isAppOpen, toggleApp, bounds, input, isActive = false, bringToFr
           result = "Type 'explorer resume' to view resume.";
           break;
         case "contact":
-          result = "Email: sm.hariprasath16@gmail.com";
+          result = "Enter your full name:";
+          setInteractiveState({ command: 'contact', step: 1, data: {} });
           break;
         case "sudo":
         case "su":
