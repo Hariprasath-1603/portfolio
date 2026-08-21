@@ -21,6 +21,7 @@ const Apps = lazy(() => import("../components/apps/Apps"));
 const DesktopDestroyer = lazy(() => import("../components/apps/DesktopDestroyer"));
 const Torch = lazy(() => import("../components/apps/Torch"));
 const ControlPanel = lazy(() => import("../components/apps/ControlPanel"));
+const Contact = lazy(() => import("../components/apps/Contact"));
 
 function Main() {
   const [isSleeping, setIsSleeping] = useState(false);
@@ -45,6 +46,7 @@ function Main() {
     spotify: false,
     destroyer: false,
     control_panel: false,
+    contact: false,
   });
 
   const [activeWindow, setActiveWindow] = useState(null);
@@ -222,8 +224,8 @@ function Main() {
         <div
           className="desktop-icon w-[4.5rem] flex flex-col justify-start items-center rounded hover:bg-white hover:bg-opacity-10 p-1.5"
           onDoubleClick={() => {
-            if (app.action === "mail") {
-              window.location.href = "mailto:sm.hariprasath16@gmail.com";
+            if (app.action === "contact") {
+              toggleWindow("contact");
             } else {
               toggleWindow(app.action, app.subAction);
             }
@@ -246,7 +248,7 @@ function Main() {
 
   // Pre-bind bringToFront and minimize handlers for commonly used windows
   const bringers = useMemo(() => {
-    const names = ["explorer", "recycle", "calculator", "vscode", "destroyer", "control_panel"];
+    const names = ["explorer", "recycle", "calculator", "vscode", "destroyer", "control_panel", "contact"];
     const map = {};
     names.forEach((n) => {
       map[n] = () => bringToFront(n);
@@ -255,7 +257,7 @@ function Main() {
   }, [bringToFront]);
 
   const minimizers = useMemo(() => {
-    const names = ["explorer", "recycle", "calculator", "vscode", "destroyer", "control_panel"];
+    const names = ["explorer", "recycle", "calculator", "vscode", "destroyer", "control_panel", "contact"];
     const map = {};
     names.forEach((n) => {
       map[n] = () => minimizeWindow(n);
@@ -708,3 +710,5 @@ function Main() {
 }
 
 export default Main;
+
+

@@ -210,7 +210,7 @@ const appsData = [
     id: 10,
     name: "Contact",
     icon: "/images/apps/recyclebin.png",
-    action: "mail",
+    action: "contact",
     size: "w-11 h-11",
   },
   {
@@ -263,3 +263,4 @@ export const socialMediaLinks = {
   leetcode: "https://leetcode.com/u/hariprasath-sm/",
   email: "mailto:sm.hariprasath16@gmail.com",
 };
+
