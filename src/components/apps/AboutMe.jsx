@@ -132,7 +132,7 @@ const AboutMe = ({ page, expandedDiv, handleDivClick, openBrowser }) => {
 
       case "Skills":
         return (
-          <div className="main-container flex flex-col h-screen relative p-4 overflow-y-auto">
+          <div className="main-container flex flex-col h-full relative p-4 overflow-y-auto">
             <h2 className="text-2xl font-bold mb-6">Skills</h2>
             {[
               "Languages & Core",
@@ -188,7 +188,7 @@ const AboutMe = ({ page, expandedDiv, handleDivClick, openBrowser }) => {
         );
       case "Projects":
         return (
-          <div className="w-full h-full overflow-y-auto p-2" style={{ scrollbarWidth: 'thin', scrollbarColor: '#666 transparent' }}>
+          <div className="w-full h-full overflow-y-auto p-2 pb-16" style={{ scrollbarWidth: 'thin', scrollbarColor: '#666 transparent' }}>
             <div className="grid sm:grid-cols-2 gap-2">
               {githubRepos.map((repo, index) => (
                 <ProjectCard key={index} repo={repo} />
@@ -231,10 +231,11 @@ const AboutMe = ({ page, expandedDiv, handleDivClick, openBrowser }) => {
   };
 
   return (
-    <main className="h-[100vh] w-full ml-2.5 mt-2">
+    <main className="flex-1 min-h-0 min-w-0 w-full h-full ml-2 mt-2 flex flex-col pr-2">
       {renderPageContent()}
     </main>
   );
 };
 
 export default AboutMe;
+
