@@ -241,7 +241,7 @@ const Explorer = ({ isExplorerOpen, toggleExplorer, aboutMe, bounds, isActive = 
               <MdClose />
             </button>
           </div>
-          <div className="content text-white select-none">
+          <div className="content flex-1 min-h-0 flex flex-col text-white select-none">
             <div className="absolute bg-neutral-800 top-[6.5px] h-[2em] left-[6px] w-60 rounded-t-lg flex">
               <div className="flex justify-between items-center w-full">
                 <div className="pl-2 text-xs flex">
@@ -372,8 +372,8 @@ const Explorer = ({ isExplorerOpen, toggleExplorer, aboutMe, bounds, isActive = 
             </div>
             {aboutMe === true ? (
               <>
-                <div className="flex flex-row h-full bg-neutral-900">
-                  <div className="w-40 h-[100vh] pt-2 border-neutral-700 border-r-[1.5px] px-[2px]">
+                <div className="flex flex-row flex-1 min-h-0 bg-neutral-900">
+                  <div className="w-40 h-full pt-2 border-neutral-700 border-r-[1.5px] px-[2px]">
                     <div className="border-b-[1.5px] border-neutral-700 h-20">
                       <div className="flex items-center justify-center mr-8 text-xs hover:bg-neutral-700 w-full h-8 rounded-sm">
                         <img
@@ -445,8 +445,8 @@ const Explorer = ({ isExplorerOpen, toggleExplorer, aboutMe, bounds, isActive = 
                 </div>
               </>
             ) : (
-              <div className="flex flex-row h-full bg-neutral-900">
-                <div className="w-40 h-[100vh] pt-2 border-neutral-700 border-r-[1.5px] px-[2px]">
+              <div className="flex flex-row flex-1 min-h-0 bg-neutral-900">
+                <div className="w-40 h-full pt-2 border-neutral-700 border-r-[1.5px] px-[2px]">
                   {NAVIGATION_ITEMS.map((item) => (
                     <SidebarItem
                       key={item.id}
@@ -481,4 +481,6 @@ const Explorer = ({ isExplorerOpen, toggleExplorer, aboutMe, bounds, isActive = 
 };
 
 export default React.memo(Explorer);
+
+
 
