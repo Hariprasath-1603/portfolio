@@ -77,7 +77,7 @@ function StartMenu({
                   { name: "Visual Studio", icon: "/images/startmenu/vs-normal.ico", onClick: () => toggleWindow("app", "visualstudio") },
                   { name: "File Explorer", icon: "/images/startmenu/ms-file-explorer.ico", onClick: () => toggleWindow("explorer", "about") },
                   { name: "Spotify", icon: "/images/startmenu/spotify.svg", onClick: () => toggleWindow("app", "spotify") },
-                  { name: "Emoji TicTacToe", icon: "/images/startmenu/vs-normal.ico", onClick: () => toggleWindow("app", "emoji") },
+                  { name: "Emoji TicTacToe", icon: "https://cdn-icons-png.flaticon.com/512/555/555128.png", onClick: () => toggleWindow("app", "emoji") },
                   { name: "Terminal", icon: "/images/apps/terminal.png", onClick: () => toggleWindow("app", "terminal") },
                   { name: "Calculator", icon: "/images/apps/calculator.png", onClick: () => toggleWindow("calculator") },
                   { name: "Control Panel", icon: "/images/apps/switch.png", onClick: () => toggleWindow("control_panel") },

@@ -314,7 +314,7 @@ const appsData = [
   {
     id: 12,
     name: "Emoji TicTacToe",
-    icon: "https://laaouatni.github.io/w11CSS/images/vs-normal.ico",
+    icon: "https://cdn-icons-png.flaticon.com/512/555/555128.png",
     action: "app",
     subAction: "emoji",
     size: "w-11 h-11",
@@ -369,7 +369,7 @@ export const aiResearchHighlights = [
   {
     title: "InjectShield",
     description: "Prompt injection detection built on ETH Zurich's AgentDojo, four-component anomaly scorer, FastAPI + Groq live inference, deployed on AWS ECS Fargate.",
-    note: "Known limitation: live-inference false positives due to baseline/model mismatch — documented in repo.",
+    note: "Known limitation: live-inference false positives due to baseline/model mismatch ï¿½ documented in repo.",
     chips: ["96.7% Accuracy", "100% Recall", "AWS ECS Fargate"],
     githubLink: "https://github.com/Hariprasath-1603/InjectShield"
   },
