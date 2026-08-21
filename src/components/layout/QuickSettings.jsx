@@ -58,33 +58,6 @@ const Toggle = ({ icon: Icon, label, sub, active, onToggle, onLongPress, hasArro
   );
 };
 
-
-  <div className="flex items-center gap-3 px-1">
-    <button
-      type="button"
-      className="text-white/80 hover:text-white transition-colors flex-shrink-0"
-      onClick={onMuteToggle}
-      style={{ fontSize: "15px", background: "none", border: "none", cursor: "pointer" }}
-    >
-      {muted ? <iconMuted /> : <Icon />}
-    </button>
-    <div className="flex-1 relative h-5 flex items-center">
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={muted ? 0 : value}
-        onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full h-1 appearance-none rounded-full outline-none cursor-pointer"
-        style={{
-          background: `linear-gradient(to right, #3b82f6 ${muted ? 0 : value}%, rgba(255,255,255,0.2) ${muted ? 0 : value}%)`,
-          accentColor: "#3b82f6",
-        }}
-      />
-    </div>
-  </div>
-);
-
 let globalBrightness = 100;
 let globalVolume = 40;
 let globalMuted = false;
