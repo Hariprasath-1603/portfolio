@@ -679,6 +679,16 @@ function Main() {
                 minimizeWindow={minimizers.control_panel}
               />
             )}
+            {windows.contact && (
+              <Contact
+                isAppOpen={windows.contact}
+                toggleContact={() => toggleWindow("contact")}
+                isActive={activeWindow === "contact"}
+                bringToFront={bringers.contact}
+                isMinimized={minimizedWindows.has("contact")}
+                minimizeWindow={minimizers.contact}
+              />
+            )}
             {/* HelpMeEarn app removed */}
           </Suspense>
         </div>
@@ -710,5 +720,6 @@ function Main() {
 }
 
 export default Main;
+
 
 

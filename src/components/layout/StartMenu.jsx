@@ -81,7 +81,7 @@ function StartMenu({
                   { name: "Terminal", icon: "/images/apps/terminal.png", onClick: () => toggleWindow("app", "terminal") },
                   { name: "Calculator", icon: "/images/apps/calculator.png", onClick: () => toggleWindow("calculator") },
                   { name: "Control Panel", icon: "/images/apps/switch.png", onClick: () => toggleWindow("control_panel") },
-                  { name: "Contact", icon: "/images/apps/recyclebin.png", onClick: () => toggleWindow("mail") },
+                  { name: "Contact", icon: "/images/apps/recyclebin.png", onClick: () => toggleWindow("contact") },
                   { name: "Epstein Files", icon: "/images/apps/folder.png", onClick: () => toggleWindow("app", "epstein") },
                   { name: "AI Lab", icon: "/images/apps/folder.png", onClick: () => toggleWindow("explorer", "AI Lab") },
                   { name: "Projects", icon: "/images/apps/folder.png", onClick: () => toggleWindow("explorer", "projects") },
@@ -210,5 +210,6 @@ function StartMenu({
 }
 
 export default React.memo(StartMenu);
+
 
 
