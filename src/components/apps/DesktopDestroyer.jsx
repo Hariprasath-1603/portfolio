@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Draggable from "react-draggable";
-import { MdMinimize, MdCheckBoxOutlineBlank, MdClose } from "react-icons/md";
+import { MdMinimize, MdClose } from "react-icons/md";
 import { 
   FaHammer, 
   FaBolt, 

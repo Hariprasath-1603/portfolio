@@ -2,7 +2,7 @@ import React from "react";
 import { FaGithub, FaExternalLinkAlt, FaLinkedin } from "react-icons/fa";
 import {
   profileDescription,
-  educationExperience,
+
   githubRepos,
   skills,
   socialMediaLinks,
@@ -64,7 +64,7 @@ const Skill = ({ icon, name, size }) => (
   </div>
 );
 
-const SkillsList = ({ x, y }) => (
+// const SkillsList = ({ x, y }) => (
   <div className="flex flex-wrap gap-2">
     <>
       {skills.slice(x, y).map((skill) => (

@@ -1,25 +1,3 @@
-import {
-  JavascriptOriginal,
-  PythonOriginal,
-  Html5Original,
-  Css3Original,
-  ExpressOriginal,
-  ReactOriginal,
-  NextjsOriginal,
-  TailwindcssOriginal,
-  BootstrapPlain,
-  NodejsOriginal,
-  MongodbPlain,
-  PostmanPlain,
-  CPlain,
-  DjangoPlain,
-  MysqlOriginalWordmark,
-  PostgresqlOriginal,
-  PhotoshopOriginal,
-  FigmaOriginal,
-  BlenderOriginal,
-} from "devicons-react";
-
 // Constants
 const githubLink = "https://github.com/Hariprasath-1603";
 
@@ -183,8 +161,8 @@ export const githubRepos = [
 // Education Experience (Empty for now, can be populated later)
 export const educationExperience = [];
 
-const iconSize = 15;
-const iconClass = "mx-auto";
+
+
 
 export const skills = [
   // Languages & Core

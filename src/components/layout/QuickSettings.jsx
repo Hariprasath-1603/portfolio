@@ -58,7 +58,7 @@ const Toggle = ({ icon: Icon, label, sub, active, onToggle, onLongPress, hasArro
   );
 };
 
-const Slider = ({ icon: Icon, iconMuted, value, onChange, muted, onMuteToggle }) => (
+
   <div className="flex items-center gap-3 px-1">
     <button
       type="button"

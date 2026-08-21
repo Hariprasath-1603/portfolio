@@ -22,6 +22,7 @@ const DesktopDestroyer = lazy(() => import("../components/apps/DesktopDestroyer"
 const Torch = lazy(() => import("../components/apps/Torch"));
 const ControlPanel = lazy(() => import("../components/apps/ControlPanel"));
 const Contact = lazy(() => import("../components/apps/Contact"));
+const Welcome = lazy(() => import("../components/apps/Welcome"));
 
 function Main() {
   const [isSleeping, setIsSleeping] = useState(false);
@@ -47,6 +48,7 @@ function Main() {
     destroyer: false,
     control_panel: false,
     contact: false,
+    welcome: !sessionStorage.getItem('hasSeenWelcome'),
   });
 
   const [activeWindow, setActiveWindow] = useState(null);
@@ -248,7 +250,7 @@ function Main() {
 
   // Pre-bind bringToFront and minimize handlers for commonly used windows
   const bringers = useMemo(() => {
-    const names = ["explorer", "recycle", "calculator", "vscode", "destroyer", "control_panel", "contact"];
+    const names = ["explorer", "recycle", "calculator", "vscode", "destroyer", "control_panel", "contact", "welcome"];
     const map = {};
     names.forEach((n) => {
       map[n] = () => bringToFront(n);
@@ -257,7 +259,7 @@ function Main() {
   }, [bringToFront]);
 
   const minimizers = useMemo(() => {
-    const names = ["explorer", "recycle", "calculator", "vscode", "destroyer", "control_panel", "contact"];
+    const names = ["explorer", "recycle", "calculator", "vscode", "destroyer", "control_panel", "contact", "welcome"];
     const map = {};
     names.forEach((n) => {
       map[n] = () => minimizeWindow(n);
@@ -341,6 +343,7 @@ function Main() {
       recycle: makeBounds(WINDOW_SIZES.RECYCLE_BIN.width, WINDOW_SIZES.RECYCLE_BIN.height),
       app: makeBounds(WINDOW_SIZES.APP.width, WINDOW_SIZES.APP.height),
       destroyer: makeBounds(400, 500),
+      welcome: makeBounds(800, 560), // w-[50rem] = 800px, h-[35rem] = 560px
     };
   }, [viewportWidth, viewportHeight]);
 
@@ -687,6 +690,17 @@ function Main() {
                 bringToFront={bringers.contact}
                 isMinimized={minimizedWindows.has("contact")}
                 minimizeWindow={minimizers.contact}
+              />
+            )}
+            {windows.welcome && (
+              <Welcome
+                isAppOpen={windows.welcome}
+                toggleApp={toggleWindow}
+                bounds={bounds.welcome}
+                isActive={activeWindow === "welcome" || true} // Keep on top
+                bringToFront={bringers.welcome}
+                isMinimized={minimizedWindows.has("welcome")}
+                minimizeWindow={minimizers.welcome}
               />
             )}
             {/* HelpMeEarn app removed */}
