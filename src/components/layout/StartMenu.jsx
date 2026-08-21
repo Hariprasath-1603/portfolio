@@ -88,6 +88,7 @@ function StartMenu({
                   { name: "Skills", icon: "/images/apps/folder.png", onClick: () => toggleWindow("explorer", "Skills") },
                   { name: "Resume", icon: "/images/apps/folder.png", onClick: () => toggleWindow("explorer", "Resume") },
                   { name: "About Me", icon: "/images/apps/me.png", onClick: () => toggleWindow("explorer", "About Me") },
+                  { name: "Medium", icon: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Medium_logo_Monogram.svg", onClick: () => { window.open("https://medium.com/@sm.hariprasath16", "_blank"); toggleStart(); } },
                 ];
                 
                 const filtered = START_APPS.filter(app => app.name.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -128,6 +129,18 @@ function StartMenu({
               </div>
             </div>
             <div id="article-container">
+              <div onClick={() => { window.open("https://medium.com/@sm.hariprasath16", "_blank"); toggleStart(); }} className="recent">
+                <div>
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Medium_logo_Monogram.svg"
+                    alt="Medium icon"
+                  />
+                </div>
+                <div>
+                  <div>Medium</div>
+                  <div>Blog</div>
+                </div>
+              </div>
               <div onClick={() => window.open("https://github.com/Hariprasath-1603", "_blank")} className="recent">
                 <div>
                   <img
@@ -164,7 +177,7 @@ function StartMenu({
                   <div>Coding Profile</div>
                 </div>
               </div>
-              <div onClick={() => toggleStart && toggleStart("explorer", "Resume")} className="recent">
+              <div onClick={() => { toggleWindow("explorer", "Resume"); toggleStart(); }} className="recent">
                 <div>
                   <img
                     src="/images/apps/edge.png"
@@ -210,6 +223,7 @@ function StartMenu({
 }
 
 export default React.memo(StartMenu);
+
 
 
 
