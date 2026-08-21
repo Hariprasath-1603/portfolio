@@ -480,4 +480,5 @@ const Explorer = ({ isExplorerOpen, toggleExplorer, aboutMe, bounds, isActive = 
   );
 };
 
-export default Explorer;
+export default React.memo(Explorer);
+

@@ -294,4 +294,5 @@ const RecycleBin = ({ isRecycleOpen, toggleRecycle, bounds, isActive = false, br
   );
 };
 
-export default RecycleBin;
+export default React.memo(RecycleBin);
+

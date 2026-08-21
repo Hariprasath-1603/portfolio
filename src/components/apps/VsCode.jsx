@@ -75,4 +75,4 @@ function VsCode({ isAppOpen, toggleVsCode, bounds, isActive = false, bringToFron
   );
 }
 
-export default VsCode;
+export default React.memo(VsCode);

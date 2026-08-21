@@ -140,6 +140,13 @@ function Browser({ isAppOpen, toggleBrowser, bounds, isActive = false, bringToFr
   const iframeRef = useRef(null);
   const [url, setUrl] = useState(browserUrl || "https://www.google.com/webhp?igu=1");
   const [isMaximized, setIsMaximized] = useState(false);
+  const [contentLoaded, setContentLoaded] = useState(false);
+
+  useEffect(() => {
+    if (isAppOpen && !contentLoaded) {
+      setContentLoaded(true);
+    }
+  }, [isAppOpen, contentLoaded]);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const { name } = useParams();
 
@@ -187,13 +194,13 @@ function Browser({ isAppOpen, toggleBrowser, bounds, isActive = false, bringToFr
               />
               <div className="flex-grow">
                 <div className="h-full w-full flex flex-col flex-grow">
-                  <iframe 
+                  {contentLoaded && <iframe 
                     ref={iframeRef}
                     src={url} 
                     className="flex-grow bg-white w-full h-full" 
-                    id="chrome-screen" 
+                    id="chrome-screen"
                     title="Chrome Url"
-                  ></iframe>
+                  ></iframe>}
                 </div>
               </div>
             </div>
@@ -204,4 +211,5 @@ function Browser({ isAppOpen, toggleBrowser, bounds, isActive = false, bringToFr
   );
 }
 
-export default Browser;
+export default React.memo(Browser);
+

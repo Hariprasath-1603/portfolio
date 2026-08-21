@@ -309,4 +309,5 @@ function ControlPanel({
   );
 }
 
-export default ControlPanel;
+export default React.memo(ControlPanel);
+

@@ -1505,4 +1505,5 @@ const DesktopDestroyer = ({
   );
 };
 
-export default DesktopDestroyer;
+export default React.memo(DesktopDestroyer);
+

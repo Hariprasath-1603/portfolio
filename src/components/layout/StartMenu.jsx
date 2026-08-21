@@ -209,4 +209,5 @@ function StartMenu({
   );
 }
 
-export default StartMenu;
+export default React.memo(StartMenu);
+
