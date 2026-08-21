@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import Draggable from "react-draggable";
-import { MdMinimize, MdCheckBoxOutlineBlank, MdClose } from "react-icons/md";
-import { FaUserTie, FaUser, FaRobot } from "react-icons/fa";
+
+import { FaUserTie, FaUser, FaRobot, FaHandshake } from "react-icons/fa";
 
 const Welcome = ({ isAppOpen, toggleApp, bounds, isActive = false, bringToFront, isMinimized = false, minimizeWindow }) => {
   const [role, setRole] = useState(null);
@@ -34,45 +33,20 @@ const Welcome = ({ isAppOpen, toggleApp, bounds, isActive = false, bringToFront,
   return (
     <div
       className={`${isAppOpen && !isMinimized ? "" : "hidden"
-        } ${isActive ? 'z-50' : 'z-40'} w-full h-screen pointer-events-none absolute transition-none`}
+        } !z-[100] w-full h-screen pointer-events-auto fixed inset-0 bg-black/50 backdrop-blur-md transition-none flex items-center justify-center`}
     >
-      <Draggable
-        handle=".title-bar"
-        nodeRef={windowRef}
-        bounds={bounds}
+      <div
+        ref={windowRef}
+        className="window bg-neutral-900 overflow-hidden border-neutral-700 border-[1.5px] font-semibold pointer-events-auto h-[35rem] w-[50rem] rounded-xl flex flex-col shadow-2xl"
+        onMouseDown={() => bringToFront("welcome")}
       >
-        <div
-          ref={windowRef}
-          className="window bg-neutral-900 overflow-hidden border-neutral-700 border-[1.5px] font-semibold pointer-events-auto h-[35rem] w-[50rem] rounded-xl flex flex-col shadow-2xl"
-          onMouseDown={() => bringToFront("welcome")}
-        >
           <div className="title-bar shrink-0">
             <div className="text-white h-9 flex justify-between select-none">
               <div className="m-1 ml-4 font-normal flex items-center gap-2">
-                <img src="/images/apps/me.png" alt="Welcome" className="w-4 h-4" /> Welcome
+                <FaHandshake className="w-4 h-4 text-blue-400" /> Welcome
               </div>
               <div className="flex">
-                <button
-                  type="button"
-                  className="hover:bg-neutral-800 mb-2 w-11 flex justify-center items-center text-xl text-neutral-400 hover:text-white"
-                  onClick={() => minimizeWindow && minimizeWindow("welcome")}
-                >
-                  <MdMinimize />
-                </button>
-                <button
-                  type="button"
-                  className="hover:bg-neutral-800 mb-2 w-11 flex justify-center items-center text-sm text-neutral-400 hover:text-white disabled:opacity-50"
-                  disabled
-                >
-                  <MdCheckBoxOutlineBlank />
-                </button>
-                <button
-                  type="button"
-                  className="hover:bg-red-700 mb-2 w-12 flex justify-center items-center text-xl text-neutral-400 hover:text-white"
-                  onClick={handleClose}
-                >
-                  <MdClose />
-                </button>
+                {/* Close/Minimize/Restore buttons removed to force onboarding */}
               </div>
             </div>
           </div>
@@ -178,8 +152,7 @@ const Welcome = ({ isAppOpen, toggleApp, bounds, isActive = false, bringToFront,
               </div>
             )}
           </div>
-        </div>
-      </Draggable>
+      </div>
     </div>
   );
 };
