@@ -53,23 +53,23 @@ const Contact = ({ isAppOpen, toggleContact, isActive, bringToFront, minimizeWin
       isOpen={isAppOpen}
       isMinimized={isMinimized}
       title="Contact"
-      icon="/images/apps/recyclebin.png"
+      icon="/images/apps/contact.svg"
       onClose={toggleContact}
       onMinimize={minimizeWindow}
       bringToFront={bringToFront}
       isActive={isActive}
-      initialBounds={bounds}
-      className="bg-[#111111]"
+      bounds={bounds}
+      className="bg-[#111111] w-[32em] h-[42em]"
     >
-      <div className="h-full w-full flex flex-col p-6 text-white overflow-y-auto">
+      <div className="h-full w-full flex flex-col p-8 text-white overflow-y-auto box-border">
         <div className="mb-6">
           <div className="text-sm text-gray-400 uppercase tracking-widest font-semibold mb-1">Contact</div>
           <h2 className="text-3xl font-light mb-2">Say <em className="text-blue-400 italic">Hello !</em></h2>
           <p className="text-gray-400 text-sm">Have a project in mind? Let's build something amazing together.</p>
         </div>
 
-        <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4 flex-grow">
-          <div className="flex gap-4">
+        <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5 flex-grow w-full">
+          <div className="flex flex-col sm:flex-row gap-4 w-full">
             <div className="flex-1 flex flex-col gap-1">
               <label htmlFor="fname" className="text-xs text-gray-300">First Name</label>
               <input
@@ -79,7 +79,7 @@ const Contact = ({ isAppOpen, toggleContact, isActive, bringToFront, minimizeWin
                 placeholder="John"
                 value={formData.fname}
                 onChange={handleChange}
-                className="bg-white/10 border border-white/20 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                className="bg-white/10 border border-white/20 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                 required
               />
             </div>
@@ -92,7 +92,7 @@ const Contact = ({ isAppOpen, toggleContact, isActive, bringToFront, minimizeWin
                 placeholder="Doe"
                 value={formData.lname}
                 onChange={handleChange}
-                className="bg-white/10 border border-white/20 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                className="bg-white/10 border border-white/20 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                 required
               />
             </div>
@@ -106,7 +106,7 @@ const Contact = ({ isAppOpen, toggleContact, isActive, bringToFront, minimizeWin
               placeholder="john@example.com"
               value={formData.email}
               onChange={handleChange}
-              className="bg-white/10 border border-white/20 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+              className="bg-white/10 border border-white/20 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors"
               required
             />
           </div>
@@ -119,7 +119,7 @@ const Contact = ({ isAppOpen, toggleContact, isActive, bringToFront, minimizeWin
               placeholder="Tell me about your project…"
               value={formData.message}
               onChange={handleChange}
-              className="bg-white/10 border border-white/20 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-blue-500 transition-colors resize-none flex-grow"
+              className="bg-white/10 border border-white/20 rounded-md px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors resize-none flex-grow"
               required
             ></textarea>
           </div>
@@ -151,3 +151,5 @@ Contact.propTypes = {
 };
 
 export default React.memo(Contact);
+
+
