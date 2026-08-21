@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Power from "../utilities/Power";
 import { generateInitials } from "../user/UserProfile";
 import { useParams } from "react-router-dom";
-import appsData from "../../data/data";
 
 function StartMenu({
   toggleStart,
@@ -59,11 +58,37 @@ function StartMenu({
             )}
             <div id="second-app-container" className={searchTerm !== "" ? "h-full overflow-y-auto pb-4 pr-2" : "pr-2"}>
               {(() => {
-                const START_APPS = appsData.map(app => ({
-                  name: app.name,
-                  icon: app.icon,
-                  onClick: () => toggleWindow(app.action, app.subAction)
-                }));
+                const START_APPS = [
+                  { name: "Edge", icon: "/images/startmenu/edge-icon.png", onClick: () => toggleWindow("browser", "edge") },
+                  { name: "Word", icon: "/images/startmenu/word-icon.png", onClick: () => toggleWindow("app", "word") },
+                  { name: "Excel", icon: "/images/startmenu/excel-icon.png", onClick: () => toggleWindow("app", "excel") },
+                  { name: "Powerpoint", icon: "/images/startmenu/powerpoint-icon.png", onClick: () => toggleWindow("app", "powerpoint") },
+                  { name: "Office", icon: "/images/startmenu/ms-office.ico", onClick: () => toggleWindow("app", "office") },
+                  { name: "Calendar", icon: "/images/startmenu/calendar-icon.png", onClick: () => toggleWindow("app", "calendar") },
+                  { name: "Microsoft Store", icon: "/images/startmenu/ms-store-icon.png", onClick: () => toggleWindow("app", "store") },
+                  { name: "Photos", icon: "/images/startmenu/ms-foto-icon.ico", onClick: () => toggleWindow("app", "photos") },
+                  { name: "Film & TV", icon: "/images/startmenu/ms-video-icon.ico", onClick: () => toggleWindow("app", "film") },
+                  { name: "Paint", icon: "/images/startmenu/Paint-2D.ico", onClick: () => toggleWindow("app", "paint") },
+                  { name: "Paint 3D", icon: "/images/startmenu/Paint-3D.ico", onClick: () => toggleWindow("app", "paint3d") },
+                  { name: "WhiteBoard", icon: "/images/startmenu/Whiteboard.ico", onClick: () => toggleWindow("app", "whiteboard") },
+                  { name: "Settings", icon: "/images/startmenu/ms-impostazioni-icon.ico", onClick: () => toggleWindow("app", "settings") },
+                  { name: "Skype", icon: "/images/startmenu/ms-skype.ico", onClick: () => toggleWindow("app", "skype") },
+                  { name: "VS Code", icon: "/images/startmenu/vs-code.ico", onClick: () => toggleWindow("vscode") },
+                  { name: "Visual Studio", icon: "/images/startmenu/vs-normal.ico", onClick: () => toggleWindow("app", "visualstudio") },
+                  { name: "File Explorer", icon: "/images/startmenu/ms-file-explorer.ico", onClick: () => toggleWindow("explorer", "about") },
+                  { name: "Spotify", icon: "/images/startmenu/spotify.svg", onClick: () => toggleWindow("app", "spotify") },
+                  { name: "Emoji TicTacToe", icon: "/images/startmenu/vs-normal.ico", onClick: () => toggleWindow("app", "emoji") },
+                  { name: "Terminal", icon: "/images/apps/terminal.png", onClick: () => toggleWindow("app", "terminal") },
+                  { name: "Calculator", icon: "/images/apps/calculator.png", onClick: () => toggleWindow("calculator") },
+                  { name: "Control Panel", icon: "/images/apps/switch.png", onClick: () => toggleWindow("control_panel") },
+                  { name: "Contact", icon: "/images/apps/recyclebin.png", onClick: () => toggleWindow("mail") },
+                  { name: "Epstein Files", icon: "/images/apps/folder.png", onClick: () => toggleWindow("app", "epstein") },
+                  { name: "AI Lab", icon: "/images/apps/folder.png", onClick: () => toggleWindow("explorer", "AI Lab") },
+                  { name: "Projects", icon: "/images/apps/folder.png", onClick: () => toggleWindow("explorer", "projects") },
+                  { name: "Skills", icon: "/images/apps/folder.png", onClick: () => toggleWindow("explorer", "Skills") },
+                  { name: "Resume", icon: "/images/apps/folder.png", onClick: () => toggleWindow("explorer", "Resume") },
+                  { name: "About Me", icon: "/images/apps/me.png", onClick: () => toggleWindow("explorer", "About Me") },
+                ];
                 
                 const filtered = START_APPS.filter(app => app.name.toLowerCase().includes(searchTerm.toLowerCase()));
                 const displayApps = searchTerm === "" ? filtered.slice(0, 18) : filtered;
@@ -185,4 +210,5 @@ function StartMenu({
 }
 
 export default React.memo(StartMenu);
+
 
