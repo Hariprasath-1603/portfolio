@@ -64,16 +64,6 @@ const Skill = ({ icon, name, size }) => (
   </div>
 );
 
-// const SkillsList = ({ x, y }) => (
-  <div className="flex flex-wrap gap-2">
-    <>
-      {skills.slice(x, y).map((skill) => (
-        <Skill key={skill.key} icon={skill.icon} name={skill.name} size={48} />
-      ))}
-    </>
-  </div>
-);
-
 const AboutMe = ({ page, expandedDiv, handleDivClick, openBrowser }) => {
   const [resumeUrl, setResumeUrl] = React.useState(null);
 

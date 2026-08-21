@@ -115,12 +115,6 @@ const Taskbar = ({ toggleStart, toggleExplorer, toggleBrowser, windows = {}, tog
     if (appInput) minimizeWindow && minimizeWindow(appInput);
   }, [appInput, minimizeWindow]);
 
-
-    // browser window key is either 'chrome' or 'edge'
-    const browserKey = windows.chrome ? 'chrome' : windows.edge ? 'edge' : null;
-    if (browserKey) minimizeWindow && minimizeWindow(browserKey);
-  }, [windows.chrome, windows.edge, minimizeWindow]);
-
   const handleControlPanelClick = useCallback(() => {
     minimizeWindow && minimizeWindow('control_panel');
   }, [minimizeWindow]);
