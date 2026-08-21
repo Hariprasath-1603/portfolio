@@ -6,6 +6,8 @@ import {
   githubRepos,
   skills,
   socialMediaLinks,
+  aiResearchHighlights,
+  aiTechStack
 } from "../../data/data";
 
 const ProjectCard = ({ repo }) => {
@@ -164,24 +166,71 @@ const AboutMe = ({ page, expandedDiv, handleDivClick, openBrowser }) => {
         );
       case "AI Lab":
         return (
-          <div className="w-full h-full p-4 overflow-y-auto">
-            <h2 className="text-2xl font-bold mb-4">AI Lab</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-neutral-800 p-4 rounded-md">
-                <h3 className="font-bold text-lg mb-2">🤖 Agent Scholar</h3>
-                <p className="text-sm text-neutral-400">Multi-agent research system designed to autonomously gather and synthesize information.</p>
+          <div className="w-full h-full p-4 pb-16 overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: '#666 transparent' }}>
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold mb-2">AI Lab</h2>
+              <p className="text-neutral-400">Research, architecture, and experimentation behind my projects</p>
+            </div>
+            
+            <div className="mb-10">
+              <h3 className="text-xl font-semibold mb-4 border-b border-neutral-700 pb-2">Research Highlights</h3>
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                {aiResearchHighlights.map((highlight, idx) => (
+                  <div key={idx} className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-xl hover:-translate-y-1 hover:bg-white/10 transition-all duration-300 flex flex-col h-full">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="font-bold text-lg text-white">{highlight.title}</h4>
+                      <a href={highlight.githubLink} target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-white transition-colors">
+                        <FaExternalLinkAlt />
+                      </a>
+                    </div>
+                    
+                    <p className="text-sm text-neutral-300 mb-4 flex-1">{highlight.description}</p>
+                    
+                    {highlight.hasDiagram && (
+                      <div className="my-4 p-3 bg-black/40 rounded-lg flex items-center justify-between text-[11px] sm:text-xs font-mono text-neutral-300 overflow-x-auto whitespace-nowrap">
+                        <span className="px-2 py-1 bg-blue-900/40 border border-blue-700/50 rounded">Planner</span>
+                        <span className="mx-1 text-neutral-500">→</span>
+                        <span className="px-2 py-1 bg-purple-900/40 border border-purple-700/50 rounded">Searcher</span>
+                        <span className="mx-1 text-neutral-500">→</span>
+                        <span className="px-2 py-1 bg-pink-900/40 border border-pink-700/50 rounded">Synthesizer</span>
+                        <span className="mx-1 text-neutral-500">→</span>
+                        <span className="px-2 py-1 bg-emerald-900/40 border border-emerald-700/50 rounded">Writer</span>
+                      </div>
+                    )}
+                    
+                    <div className="flex flex-wrap gap-2 mb-2 mt-auto">
+                      {highlight.chips.map((chip, cIdx) => (
+                        <span key={cIdx} className="text-xs bg-white/10 px-2 py-1 rounded-md text-neutral-200">
+                          {chip}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {highlight.note && (
+                      <p className="text-xs text-amber-500/80 italic mt-3">
+                        {highlight.note}
+                      </p>
+                    )}
+                  </div>
+                ))}
               </div>
-              <div className="bg-neutral-800 p-4 rounded-md">
-                <h3 className="font-bold text-lg mb-2">👁 VisionCrafter</h3>
-                <p className="text-sm text-neutral-400">Generative AI / Computer Vision model for advanced image synthesis.</p>
-              </div>
-              <div className="bg-neutral-800 p-4 rounded-md">
-                <h3 className="font-bold text-lg mb-2">🧠 ML Experiments</h3>
-                <p className="text-sm text-neutral-400">Various models, experiments & research in deep learning architectures.</p>
-              </div>
-              <div className="bg-neutral-800 p-4 rounded-md">
-                <h3 className="font-bold text-lg mb-2">⚙️ MLOps Integration</h3>
-                <p className="text-sm text-neutral-400">Automated training pipelines and model deployment strategies.</p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-4 border-b border-neutral-700 pb-2">AI Tech Stack</h3>
+              <div className="flex flex-col gap-3">
+                {aiTechStack.map((stack, idx) => (
+                  <div key={idx} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-3 bg-white/5 backdrop-blur-sm border border-white/5 rounded-lg">
+                    <span className="text-sm font-semibold text-neutral-400 w-32 uppercase tracking-wider">{stack.category}</span>
+                    <div className="flex flex-wrap gap-2">
+                      {stack.tools.map((tool, tIdx) => (
+                        <span key={tIdx} className="text-sm bg-indigo-500/20 border border-indigo-500/30 text-indigo-200 px-3 py-1 rounded-full">
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

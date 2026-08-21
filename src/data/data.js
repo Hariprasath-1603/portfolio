@@ -379,3 +379,42 @@ export const socialMediaLinks = {
 
 
 
+
+export const aiResearchHighlights = [
+  {
+    title: "VisionCrafter",
+    description: "Conditional GAN for text-to-image generation, trained on COCO.",
+    note: "",
+    chips: ["Patent Filed", "TensorFlow/Keras", "Custom GAN Architecture"],
+    githubLink: "https://github.com/Hariprasath-1603/VisionCrafter"
+  },
+  {
+    title: "InjectShield",
+    description: "Prompt injection detection built on ETH Zurich's AgentDojo, four-component anomaly scorer, FastAPI + Groq live inference, deployed on AWS ECS Fargate.",
+    note: "Known limitation: live-inference false positives due to baseline/model mismatch — documented in repo.",
+    chips: ["96.7% Accuracy", "100% Recall", "AWS ECS Fargate"],
+    githubLink: "https://github.com/Hariprasath-1603/InjectShield"
+  },
+  {
+    title: "AgentScholar",
+    description: "4-agent LangGraph research pipeline (Planner ? Searcher ? Synthesizer ? Report Writer), FAISS/ChromaDB retrieval, hallucination + source-credibility scoring.",
+    note: "",
+    chips: ["LangGraph", "Multi-Agent Orchestration", "FAISS/ChromaDB"],
+    githubLink: "https://github.com/Hariprasath-1603/AgentScholar",
+    hasDiagram: true
+  },
+  {
+    title: "BudgetShield",
+    description: "LLM cost-governance proxy, concurrency-safe atomic Postgres CTE metering, 402 budget enforcement, runaway-agent detector.",
+    note: "",
+    chips: ["Postgres CTE Metering", "402 Enforcement", "Runaway Detection"],
+    githubLink: "https://github.com/Hariprasath-1603/BudgetShield"
+  }
+];
+
+export const aiTechStack = [
+  { category: "Generation", tools: ["Groq", "Llama 3.1"] },
+  { category: "Retrieval", tools: ["FAISS", "ChromaDB", "Tavily"] },
+  { category: "Orchestration", tools: ["LangGraph", "LangChain"] },
+  { category: "Deployment", tools: ["FastAPI", "Docker", "AWS ECS Fargate"] }
+];
